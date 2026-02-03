@@ -26,7 +26,9 @@ public class Cubito {
             litrosActuales += litros;
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
 
     // Vaciar el cubo
@@ -35,7 +37,9 @@ public class Cubito {
             litrosActuales -= litros;
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
 }
 

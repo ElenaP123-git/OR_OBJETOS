@@ -14,14 +14,31 @@ public class Alumno {
     }
 
     // metodos
-    public void imprimeSiHaAprobado(NotaAsignatura asignatura) {
-        if (asignatura.calcularMedia() >= 5) {
-            System.out.println("El alumno " + nombre + " ha aprobado la asignatura " + asignatura.asignatura);
+    public void imprimeSiHaAprobado(String nombreAsignatura) {
+
+        NotaAsignatura asignatura = null;
+
+        // Elegir la asignatura correcta
+        if (nombreAsignatura.equalsIgnoreCase("Programación")) {
+            asignatura = programacion;
+        } else if (nombreAsignatura.equalsIgnoreCase("Bases de Datos")) {
+            asignatura = baseDatos;
+        }
+
+        // Si no existe esa asignatura
+        if (asignatura == null) {
+            System.out.println("La asignatura " + nombreAsignatura + " no existe para este alumno.");
         }
         else {
-            System.out.println("El alumno " + nombre + " NO ha aprobado la asignatura " + asignatura.asignatura);
+            // Comprobar si aprueba
+            if (asignatura.calcularMedia() >= 5) {
+                System.out.println("El alumno " + nombre + " ha aprobado la asignatura " + nombreAsignatura);
+            } else {
+                System.out.println("El alumno " + nombre + " NO ha aprobado la asignatura " + nombreAsignatura);
+            }
         }
     }
+
 
     @Override public String toString() {
         return "Alumno{" + "nombre='" + nombre + '\'' +

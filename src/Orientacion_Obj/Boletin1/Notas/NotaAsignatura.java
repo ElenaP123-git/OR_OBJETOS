@@ -3,7 +3,7 @@ package Orientacion_Obj.Boletin1.Notas;
 public class NotaAsignatura {
     // atributos
     String asignatura;
-    int nota1;
+    int nota1; // mejor que sea double
     int nota2;
     int nota3;
 
