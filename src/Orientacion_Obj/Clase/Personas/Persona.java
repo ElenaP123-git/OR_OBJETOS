@@ -56,6 +56,6 @@ public class Persona {
                 '}';
     }
 }
-class Animal{                    // puedo crear más clases pero no public
+class Animal{        // puedo crear más clases pero no public
 
 }
