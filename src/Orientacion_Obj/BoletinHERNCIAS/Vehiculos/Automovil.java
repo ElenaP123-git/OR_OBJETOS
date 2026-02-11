@@ -15,4 +15,11 @@ public class Automovil extends Vehiculo {
         this.tipo_gasolina = tipo_gasolina;
         this.tiene_aire_acondc = tiene_aire_acondc;
     }
+
+    // SI NO PONGO EL TO STRING EN LAS SUBCLASES, TOMA EL DEL PADRE Y LUEGO CUANDO LO QUIERA IMPRIMIR...
+    // en lugar de algo asi:
+    // Camion{long_remolque=2.5, tipo_camion='ligero', altura=2.0} --> toString HIJO
+    // sale así:
+    // Iveco Mini (B) --> toString PADRE
+
 }

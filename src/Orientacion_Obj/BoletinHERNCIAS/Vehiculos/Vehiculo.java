@@ -2,16 +2,15 @@ package Orientacion_Obj.BoletinHERNCIAS.Vehiculos;
 
 public class Vehiculo {
 
-    //atributos
+    // Atributos comunes a TODOS los vehículos
     private String marca;
     private String modelo;
     private int velocidad_max;
     private int peso;
     private int num_ruedas;
-    private String tipo;
+    private String tipo; // B, C, ECO, etc.
 
-    //constructor
-
+    // Constructor
     public Vehiculo(String marca, String modelo, int velocidad_max, int peso, int num_ruedas, String tipo) {
         this.marca = marca;
         this.modelo = modelo;
@@ -21,15 +20,36 @@ public class Vehiculo {
         this.tipo = tipo;
     }
 
+    // Métodos
 
-    //métodos
+    public boolean tieneLimitacionParaCircular(String ciudad) {
+
+        ciudad = ciudad.toLowerCase(); // evitar problemas con mayúsculas
+
+        if (ciudad.equals("madrid") || ciudad.equals("barcelona")) {
+            if (tipo.equals("B") || tipo.equals("C")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        else if (ciudad.equals("valencia") || ciudad.equals("sevilla")) {
+            if (tipo.equals("C")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
 
 
-
-    //otros
-
-
-    //toString
-
-
+    @Override
+    public String toString() {
+        return marca + " " + modelo + " (" + tipo + ")";
+    }
 }
+

@@ -16,4 +16,19 @@ public class Camion extends Vehiculo{
         this.tipo_camion = tipo_camion;
         this.altura = altura;
     }
+
+    // SI NO PONGO EL TO STRING EN LAS SUBCLASES, TOMA EL DEL PADRE Y LUEGO CUANDO LO QUIERA IMPRIMIR...
+    // en lugar de algo asi:
+    // Camion{long_remolque=2.5, tipo_camion='ligero', altura=2.0} --> toString HIJO
+    // sale así:
+    // Iveco Mini (B) --> toString PADRE
+
+    @Override
+    public String toString() {
+        return "Camion{" +
+                "long_remolque=" + long_remolque +
+                ", tipo_camion='" + tipo_camion + '\'' +
+                ", altura=" + altura +
+                '}';
+    }
 }
