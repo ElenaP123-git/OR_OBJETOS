@@ -9,11 +9,13 @@ public class Villano extends Personaje {
 
     @Override
     public boolean esAtacado(Personaje atacante) {
+
         return true; // lo ataca todo el mundo
     }
 
     @Override
     public boolean esAtacado(Personaje atacante, int distancia) {
+
         return true; // desde cualquier distancia
     }
 }
