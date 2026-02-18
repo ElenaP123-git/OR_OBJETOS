@@ -1,5 +1,6 @@
 package Orientacion_Obj.SIMULACROS.SeguridadEmp;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Incidente {
@@ -9,21 +10,21 @@ public class Incidente {
     private int id;
     private String nombre;
     private String descripcion;
-    private String fecha_registro;
-    private String fecha_fin;
+    private LocalDate fecha_registro;
+    private LocalDate fecha_fin;
     private EstadoIncidente estado;
     private Criticidad criticidad;
     private Equipo equipo;
 
     // constructor
 
-    public Incidente(int id, String nombre, String descripcion, String fecha_registro, String fecha_fin, EstadoIncidente estado, Criticidad criticidad, Equipo equipo) {
+    public Incidente(int id, String nombre, String descripcion, LocalDate fecha_fin, EstadoIncidente estado, Criticidad criticidad, Equipo equipo) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fecha_registro = fecha_registro;
-        setFecha_fin(fecha_fin);
+        this.fecha_registro = LocalDate.now();
         this.estado = estado;
+        setFecha_fin(fecha_fin); // si esta funcion usa estado, estado tiene que estar antes
         this.criticidad = criticidad;
         this.equipo = equipo;
     }
@@ -36,12 +37,15 @@ public class Incidente {
     public void setNombre(String nombre) {this.nombre = nombre;}
     public String getDescripcion() {return descripcion;}
     public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
-    public String getFecha_registro() {return fecha_registro;}
-    public void setFecha_registro(String fecha_registro) {this.fecha_registro = fecha_registro;}
-    public String getFecha_fin() {return fecha_fin;}
+    public LocalDate getFecha_registro() {return fecha_registro;}
+    public void setFecha_registro(LocalDate fecha_registro) {this.fecha_registro = fecha_registro;}
+    public LocalDate getFecha_fin() {return fecha_fin;}
 
-    public void setFecha_fin(String fecha_fin) {
-        if(!estado.equals("CERRADO")){
+    public void setFecha_fin(LocalDate fecha_fin) {
+        if (estado == EstadoIncidente.CERRADO) {
+            this.fecha_fin = fecha_fin;
+        }
+        else{
             this.fecha_fin = null;
         }
     }
@@ -55,17 +59,29 @@ public class Incidente {
 
     // métodos
 
-    private boolean esUrgente(Incidente i){
-        if(estado.equals("CRITICA") || estado.equals("GRAVE")){
+    protected boolean esUrgente() {
+
+        LocalDate hoy = LocalDate.now();
+
+        // CRÍTICO → urgente siempre
+        if (criticidad == Criticidad.CRITICO) {
             return true;
         }
-        if (estado.equals("MEDIA")){
+
+        // GRAVE → urgente si han pasado 7 días
+        if (criticidad == Criticidad.GRAVE && fecha_registro.plusDays(7).isBefore(hoy)) {
             return true;
         }
-        else{
-            return false;
+
+        // MEDIO → urgente si han pasado 30 días
+        if (criticidad == Criticidad.MEDIO && fecha_registro.plusDays(30).isBefore(hoy)) {
+            return true;
         }
+
+        // LEVE → nunca urgente
+        return false;
     }
+
 
     // equals hashcode
 
@@ -85,12 +101,6 @@ public class Incidente {
 
     @Override
     public String toString() {
-        return "Incidente{" +
-                  nombre +
-                " - " + estado +
-                ": " + criticidad +
-                " - " + fecha_registro +
-                " - " + equipo +
-                '}';
+        return nombre + " - " + estado + ": " + criticidad + " - " + fecha_registro + " - " + equipo.getNombre(); //ojo
     }
 }

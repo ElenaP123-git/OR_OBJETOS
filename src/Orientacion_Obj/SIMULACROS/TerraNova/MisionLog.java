@@ -1,0 +1,27 @@
+package Orientacion_Obj.SIMULACROS.TerraNova;
+
+import java.time.LocalDate;
+
+public class MisionLog extends Mision{
+
+    //atributos
+    private double carga;
+
+    //constructor
+    public MisionLog(int cod, String nombre, LocalDate fecha_lanz, Nave nave, double carga) {
+        super(cod, nombre, fecha_lanz, nave);
+        this.carga = carga;
+    }
+
+    //getters setters
+
+    public double getCarga() {
+        return carga;
+    }
+
+    public void setCarga(double carga) {
+        this.carga = carga;
+    }
+
+
+}
