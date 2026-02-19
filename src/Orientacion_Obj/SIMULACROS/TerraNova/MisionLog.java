@@ -23,5 +23,18 @@ public class MisionLog extends Mision{
         this.carga = carga;
     }
 
+    @Override
+    public boolean mision_riesgo() {
+        if(getCarga() <= 50)return false;
+        switch (getFecha_lanz().getDayOfWeek()){
+            case SATURDAY,SUNDAY:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    // métodos
+
 
 }

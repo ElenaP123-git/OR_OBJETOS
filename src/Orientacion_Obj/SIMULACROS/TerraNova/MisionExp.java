@@ -33,5 +33,19 @@ public class MisionExp extends Mision{
         this.tripulacion = tripulacion;
     }
 
+    @Override
+    public boolean mision_riesgo() {
+        LocalDate hoy = LocalDate.now();
+
+        if (destino.equalsIgnoreCase("Marte")){
+            return true;
+        } else if (!getFecha_lanz().isAfter(hoy.plusDays(7))) {
+            return true;
+        }
+        return false;
+    }
+
+
+    // métodos
 
 }

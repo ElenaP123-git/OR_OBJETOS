@@ -44,7 +44,10 @@ public abstract class Mision {
 
     public void setFecha_lanz(LocalDate fecha_lanz) { //validacion
         if (fecha_lanz.isBefore(LocalDate.now())){
-            this.fecha_lanz = null;
+            System.out.println("ERROR: La fecha no puede ser pasada");
+        }
+        else{
+            this.fecha_lanz = fecha_lanz;
         }
     }
 
@@ -65,14 +68,12 @@ public abstract class Mision {
     }
 
     //metodos
-    private boolean mision_riesgo(){
-
-    }
+    public abstract boolean mision_riesgo(); // un metodo abstracto no puede ser privado
 
     //toString
 
     @Override
     public String toString() {
-        return "[" + nave + "]" + cod + ":" + nombre + " - " + fecha_lanz + "(" + estado + ")";
+        return  cod + ":" + nombre + " - " + fecha_lanz + "(" + estado + ") ->" + nave.getId();
     }
 }

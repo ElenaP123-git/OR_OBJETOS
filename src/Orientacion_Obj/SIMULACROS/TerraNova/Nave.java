@@ -8,13 +8,15 @@ public class Nave {
     private String id;
     private String modelo;
     private int horas_vuelo;
+    private Comandante comandante;
 
     //constructor
 
-    public Nave(String id, String modelo, int horas_vuelo) {
+    public Nave(String id, String modelo, int horas_vuelo, Comandante comandante) {
         this.id = id;
         this.modelo = modelo;
         this.horas_vuelo = horas_vuelo;
+        this.comandante = comandante;
     }
 
     //getters y setters
@@ -43,6 +45,14 @@ public class Nave {
         this.horas_vuelo = horas_vuelo;
     }
 
+    public Comandante getComandante() {
+        return comandante;
+    }
+
+    public void setComandante(Comandante comandante) {
+        this.comandante = comandante;
+    }
+
     //equals
 
     @Override
@@ -60,10 +70,6 @@ public class Nave {
 
     @Override
     public String toString() {
-        return "Nave{" +
-                "id='" + id + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", horas_vuelo=" + horas_vuelo +
-                '}';
+        return id + "(" + modelo + ") - Cmd: " + comandante.getNombre();
     }
 }
