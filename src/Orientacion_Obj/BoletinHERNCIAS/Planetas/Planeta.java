@@ -42,5 +42,3 @@ public class Planeta extends Astro {
         return "Planeta: " + nombre + " | Masa: " + masa + " | Diámetro: " + diametro;
     }
 }
-
-
