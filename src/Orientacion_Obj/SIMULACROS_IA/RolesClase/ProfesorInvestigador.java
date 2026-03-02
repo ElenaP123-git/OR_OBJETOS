@@ -1,8 +1,8 @@
-package Orientacion_Obj.SIMULACROS_IA;
+package Orientacion_Obj.SIMULACROS_IA.RolesClase;
 
 import java.time.LocalDate;
 
-public class ProfesorInvestigador extends Persona implements Profesor,Investigador{
+public class ProfesorInvestigador extends Persona implements Profesor, Investigador {
 
     // constructor super
     public ProfesorInvestigador(String nombre, String id, LocalDate fecha) {

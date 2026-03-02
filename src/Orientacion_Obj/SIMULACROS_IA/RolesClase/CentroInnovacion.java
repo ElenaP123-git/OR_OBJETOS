@@ -1,9 +1,9 @@
-package Orientacion_Obj.SIMULACROS_IA;
+package Orientacion_Obj.SIMULACROS_IA.RolesClase;
 
 public class CentroInnovacion {
-    private Persona [] persona;
-    private Actividad [] actividad;
-    private Acceso [] acceso;
+    private Persona[] persona;
+    private Actividad[] actividad;
+    private Acceso[] acceso;
     private int contPersonas;
     private int contadorActividad;
     private int contAcceso;

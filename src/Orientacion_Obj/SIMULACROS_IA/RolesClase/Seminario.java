@@ -1,8 +1,8 @@
-package Orientacion_Obj.SIMULACROS_IA;
+package Orientacion_Obj.SIMULACROS_IA.RolesClase;
 
 import java.time.LocalDate;
 
-public class Seminario extends Actividad{
+public class Seminario extends Actividad {
 
     //constructor super
     public Seminario(String titulo, LocalDate fecha, int horas) {
