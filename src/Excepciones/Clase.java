@@ -1,0 +1,14 @@
+package Excepciones;
+
+public class Clase {
+
+        public void comprobarLista(Integer[] lista) {
+            for (Integer num : lista) {
+                if (num != null && num > 0) {
+                    throw new ArithmeticException("Número positivo detectado: " + num);
+                }
+            }
+            System.out.println("Todos los números son negativos o cero.");
+        }
+    }
+
