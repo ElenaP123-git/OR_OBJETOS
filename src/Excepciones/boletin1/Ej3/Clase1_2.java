@@ -1,4 +1,4 @@
-package Excepciones; // IA, es para ver el Scanner (auqnue pone el gestiona e la misma clase)
+package Excepciones.boletin1.Ej3; // IA, es para ver el Scanner (auqnue pone el gestiona e la misma clase)
 
 import java.util.Scanner;
 

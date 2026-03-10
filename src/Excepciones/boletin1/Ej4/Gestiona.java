@@ -1,4 +1,4 @@
-package Excepciones.Ej4;
+package Excepciones.boletin1.Ej4;
 
 public class Gestiona {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Excepciones.Ej4;
+package Excepciones.boletin1.Ej4;
 
 import java.util.Random;
 
@@ -26,6 +26,8 @@ public class Clase {
         System.out.println("Proceso terminado");
     }
 }
+
+
 //División por 0 → ArithmeticException
 
 //Índice fuera del array → ArrayIndexOutOfBoundsException
