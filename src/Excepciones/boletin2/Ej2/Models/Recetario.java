@@ -1,11 +1,12 @@
 package Excepciones.boletin2.Ej2.Models;
 
 import Excepciones.boletin2.Ej2.Exceptions.CocinaException;
+import Excepciones.boletin2.Ej2.Exceptions.RecetarioException;
 
 public class Recetario {
 
     //atributos
-    private Receta [] recetas;
+    private Receta[] recetas;
     private int numRecetas;
 
     //constructor
@@ -15,32 +16,36 @@ public class Recetario {
 
     //métodos
 
-    public boolean addReceta(Receta r){
-        if (numRecetas >= recetas.length){
+    public boolean addReceta(Receta r) {
+        if (numRecetas >= recetas.length) {
             return false;
-        }
-        else{
+        } else {
             recetas[numRecetas] = r;
             numRecetas++;
             return true;
         }
     }
 
-    public Receta buscar(String nombre) throws CocinaException {
+    public Receta buscar(String nombre) throws RecetarioException { // LAS BÚSQUEDAS SIEMPRE CON WHILE
+        boolean encontrado = false;
+        int i = 0;
+        Receta r = null;
 
-            for (int i = 0; i < numRecetas; i++) {
-
-                // si NO coincide el nombre, seguimos (de otra manera me da error)
-                if (!recetas[i].getNombre().equalsIgnoreCase(nombre)) {
-                    continue;
-                }
-
-                // si coincide, de lujo, pa lante
-                return recetas[i];
+        while (!encontrado && i < numRecetas) {
+            if (recetas[i].getNombre().equalsIgnoreCase(nombre)) {
+                encontrado = true;
+                r = recetas[i];
+            } else {
+                i++;
             }
 
-            // si termina el bucle sin encontrarla, lanzo la excepción (esto pasa cuando receta es null)
-            throw new CocinaException("\nLa receta " + nombre + " no existe en el recetario");
         }
-
+        if (!encontrado) {
+            throw new RecetarioException ("\nLa receta " + nombre + " no existe en el recetario");
+        }
+        return r;
     }
+}
+
+
+
