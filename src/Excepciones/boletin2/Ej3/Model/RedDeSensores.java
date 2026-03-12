@@ -15,15 +15,37 @@ public class RedDeSensores {
     }
 
     //métodos
-    public boolean addSensore(Sensor s) {
-        for (Sensor se : sensores) {
-            if (se != null) {
-                se = s;
-                numSensores++;
-                return true;
-            } else {
-                return false;
+
+    /*
+    public boolean addSensores(Sensor s) {
+        if (numSensores < sensores.length) {
+            sensores[numSensores] = s;
+            numSensores++;
+            return true;
+        }
+        return false;
+    }
+    public boolean validarSensores() throws SensorException, FalloCriticoException {
+
+        int sensoresFallados = 0;
+
+        for (int i = 0; i < numSensores; i++) {
+            Sensor s = sensores[i];
+
+            int anomalias = s.contarLecturasAnomalas();
+            int total = s.getNumLecturas();
+
+            if (total > 0 && anomalias >= total / 3.0) {
+                sensoresFallados++;
+                throw new SensorException(s.getId(),
+                        "El sensor tiene un tercio de lecturas anómalas.");
             }
         }
-    }
+
+        if (sensoresFallados > numSensores / 2.0) {
+            throw new FalloCriticoException("Más de la mitad de los sensores han fallado.");
+        }
+
+        return true;
+    }*/
 }

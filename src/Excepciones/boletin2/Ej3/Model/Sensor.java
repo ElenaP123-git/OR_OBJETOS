@@ -39,9 +39,18 @@ public class Sensor {
             valida = false; // lectura anómala
         }
         if (numLecturas < historialLectura.length) {
-            historialLectura[numLecturas] = new Lectura(fecha, valor, valida);
+            historialLectura[numLecturas] = new Lectura(fecha, valor, valida); // se guarda una lectura nueva dentro del array
             numLecturas++;
         }
+    }
+    public int contarLecturasAnomalas() {
+        int contador = 0;
+        for (int i = 0; i < numLecturas; i++) {
+            if (!historialLectura[i].isValida()) {
+                contador++;
+            }
+        }
+        return contador;
     }
 
     //getters y setters
