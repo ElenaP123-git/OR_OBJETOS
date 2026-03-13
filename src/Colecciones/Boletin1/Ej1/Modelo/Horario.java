@@ -1,4 +1,4 @@
-package Colecciones.Boletin1.Modelo;
+package Colecciones.Boletin1.Ej1.Modelo;
 
 public class Horario {
 

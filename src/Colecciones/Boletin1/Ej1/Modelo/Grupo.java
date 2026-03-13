@@ -1,7 +1,7 @@
-package Colecciones.Boletin1.Modelo;
+package Colecciones.Boletin1.Ej1.Modelo;
 
-import Colecciones.Boletin1.Exceptions.EstudianteNoEncontradoException;
-import Colecciones.Boletin1.Exceptions.GrupoNoEncontradoException;
+import Colecciones.Boletin1.Ej1.Exceptions.EstudianteNoEncontradoException;
+import Colecciones.Boletin1.Ej1.Exceptions.GrupoNoEncontradoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,16 +31,36 @@ public class Grupo {
 
     // MÉTODOS
 
+    public double calculcarPromedioEstudiante(String id) throws EstudianteNoEncontradoException {
+        double resultado = 0;
+        Estudiante e = buscarEstudiante(id);
+        if (e == null){
+            throw new EstudianteNoEncontradoException("No existe un estudiante con ID: " + id);
+        }
+        resultado = e.calcularPromedio();
+        return resultado;
+    }
+
     public void agregarEstudiante(Estudiante e) {
         estudiantes.add(e);
     }
 
     public Estudiante buscarEstudiante(String id) throws EstudianteNoEncontradoException {
-        for (Estudiante e : estudiantes) {
-            if (e.getId().equalsIgnoreCase(id))
-                return e;
-        }
-        throw new EstudianteNoEncontradoException("No existe un estudiante con ID: " + id);
+        boolean encontrado = false;
+        int i = 0;
+        Estudiante e = null;
+
+        do{
+            if(estudiantes.get(i).getId().equalsIgnoreCase(id)){ //el get(i) es igual que lista[i], te da el id de cada estudiante
+                encontrado = true;
+                e = estudiantes.get(i);
+            }
+            else{
+                i++;
+            }
+        } while (!encontrado &&  i < this.estudiantes.size());
+
+        return e;
     }
 
     public double promedioGrupo() throws GrupoNoEncontradoException {
@@ -61,6 +81,11 @@ public class Grupo {
         return suma / contador;
     }
 
+    public void muestraListEstyGrupos(){
+        for(int i = 0; i < estudiantes.size();i++){
+            System.out.println(this.descripcion + " - " + estudiantes.get(i).toString());
+        }
+    }
 
     // GETTERS Y SETTERS
 

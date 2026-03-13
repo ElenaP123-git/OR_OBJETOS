@@ -1,6 +1,6 @@
-package Colecciones.Boletin1.Modelo;
+package Colecciones.Boletin1.Ej1.Modelo;
 
-import Colecciones.Boletin1.Exceptions.EstudianteNoEncontradoException;
+import Colecciones.Boletin1.Ej1.Exceptions.EstudianteNoEncontradoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class Estudiante {
     public Estudiante(String nombre, String id) {
         this.nombre = nombre;
         this.id = id;
-        this.notas = new ArrayList<>();
+        this.notas = new ArrayList<>(); //OJO
     }
 
 

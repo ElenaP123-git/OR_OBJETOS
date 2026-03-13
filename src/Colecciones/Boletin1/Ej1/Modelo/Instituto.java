@@ -1,6 +1,6 @@
-package Colecciones.Boletin1.Modelo;
+package Colecciones.Boletin1.Ej1.Modelo;
 
-import Colecciones.Boletin1.Exceptions.GrupoNoEncontradoException;
+import Colecciones.Boletin1.Ej1.Exceptions.GrupoNoEncontradoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +34,11 @@ public class Instituto {
         throw new GrupoNoEncontradoException("No existe un grupo con esa descripción.");
     }
 
+    public void muestroinfoEstudoGrupo(){
+        for (Grupo g: grupos){
+            g.muestraListEstyGrupos();
+        }
+    }
 
     // GETTERS Y SETTERS
 

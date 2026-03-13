@@ -1,4 +1,4 @@
-package Colecciones.Boletin1.Exceptions;
+package Colecciones.Boletin1.Ej1.Exceptions;
 
 public class GrupoNoEncontradoException extends Exception {
 
