@@ -7,49 +7,50 @@ import Colecciones.Boletin1.Ej2.Model.Equipo;
 import java.util.zip.DataFormatException;
 
 public class GestionaEquipos {
-    public static void main(String[] args) {
 
-        try {
-            // Crear alumnos
-            Alumno a1 = new Alumno("Ana", "111A");
-            Alumno a2 = new Alumno("Luis", "222B");
-            Alumno a3 = new Alumno("Marta", "333C");
-            Alumno a4 = new Alumno("Pepe", "444D");
+            public static void main(String[] args) {
 
-            // Crear equipos
-            Equipo futbol = new Equipo("Fútbol");
-            Equipo baloncesto = new Equipo("Baloncesto");
+                try {
+                    // Crear alumnos
+                    Alumno a1 = new Alumno("Ana", "111A");
+                    Alumno a2 = new Alumno("Luis", "222B");
+                    Alumno a3 = new Alumno("Marta", "333C");
+                    Alumno a4 = new Alumno("Pepe", "444D");
 
-            // Añadir alumnos
-            futbol.addAlumno(a1);
-            futbol.addAlumno(a2);
-            futbol.addAlumno(a3);
+                    // Crear equipos
+                    Equipo futbol = new Equipo("Fútbol");
+                    Equipo baloncesto = new Equipo("Baloncesto");
 
-            baloncesto.addAlumno(a2);
-            baloncesto.addAlumno(a4);
+                    // Añadir alumnos
+                    futbol.addAlumno(a1);
+                    futbol.addAlumno(a2);
+                    futbol.addAlumno(a3);
 
-            // Mostrar equipos
-            System.out.println("\n--- EQUIPO FÚTBOL ---");
-            futbol.mostrarEquipo();
+                    baloncesto.addAlumno(a2);
+                    baloncesto.addAlumno(a4);
 
-            System.out.println("\n--- EQUIPO BALONCESTO ---");
-            baloncesto.mostrarEquipo();
+                    // Mostrar equipos
+                    futbol.mostrarEquipo();
+                    baloncesto.mostrarEquipo();
 
-            // Buscar alumno
-            System.out.println("\nBuscando a Luis en fútbol:");
+                    // Unión
+                    Equipo union = futbol.union(baloncesto);
+                    System.out.println("\nUNIÓN:");
+                    union.mostrarEquipo();
 
-            // Borrar alumno
-            System.out.println("\nEliminando a Marta del equipo de fútbol...");
+                    // Intersección
+                    Equipo inter = futbol.interseccion(baloncesto);
+                    System.out.println("\nINTERSECCIÓN:");
+                    inter.mostrarEquipo();
 
-            // Unión
-            System.out.println("\n--- UNIÓN FÚTBOL + BALONCESTO ---");
+                    // Borrar alumno
+                    futbol.removeAlumno(a3);
+                    System.out.println("\nFútbol tras borrar a Marta:");
+                    futbol.mostrarEquipo();
 
-
-            // Intersección
-            System.out.println("\n--- INTERSECCIÓN FÚTBOL ∩ BALONCESTO ---");
+                } catch (DeportivosException e) {
+                    System.out.println("ERROR: " + e.getMessage());
+                }
+            }
         }
-        catch(DeportivosException e){
-            System.out.println(e.getMessage());
-        }
-    }
-}
+

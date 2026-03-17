@@ -50,15 +50,22 @@ public class Equipo {
             System.out.println(" - " + a);
         }
     }
-/*
-    public void union(Equipo e2){
-        for (Alumno a: alumnos){
-            if (!e2.alumnos.contains(a)){
+    public Equipo union(Equipo otro) {
+        Equipo resultado = new Equipo(this.nombre + " + " + otro.nombre); // ojo
+        resultado.alumnos.addAll(this.alumnos);
+        resultado.alumnos.addAll(otro.alumnos);
+        return resultado;
+    }
 
+    public Equipo interseccion(Equipo otro) {
+        Equipo resultado = new Equipo(this.nombre + " ∩ " + otro.nombre);
+        for (Alumno a : this.alumnos) {
+            if (otro.alumnos.contains(a)) {
+                resultado.alumnos.add(a);
             }
         }
+        return resultado;
     }
-*/
 
     // TOSTRING
     @Override
