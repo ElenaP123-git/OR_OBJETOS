@@ -12,6 +12,12 @@ public class GestionaBiblioteca {
 
         Scanner sc = new Scanner(System.in);
         Biblioteca b = new Biblioteca();
+
+        menu(sc, b);
+    }
+
+    public static void menu(Scanner sc, Biblioteca b) {
+
         int opcion = 0;
 
         do {
@@ -27,7 +33,7 @@ public class GestionaBiblioteca {
 
             System.out.print("Elige opción: ");
             try {
-                opcion = Integer.parseInt(sc.nextLine());
+                opcion = Integer.parseInt(sc.nextLine()); //si el user no introduce un número, tiro excepción
             } catch (Exception e) {
                 System.out.println("Opción inválida.");
                 opcion = -1;
@@ -84,18 +90,45 @@ public class GestionaBiblioteca {
                 case 6:
                     System.out.print("Título: ");
                     Libro l1 = b.buscarPorTitulo(sc.nextLine());
-                    System.out.println(l1 != null ? l1 : "No encontrado");
+
                     break;
 
                 case 7:
                     System.out.print("Autor: ");
                     Libro l2 = b.buscarPorAutor(sc.nextLine());
-                    System.out.println(l2 != null ? l2 : "No encontrado");
+
                     break;
 
                 case 8:
                     System.out.println("Saliendo...");
                     break;
+
+                case 9:
+                    System.out.print("Título del libro: ");
+                    String tPrestamo = sc.nextLine();
+                    System.out.print("DNI del usuario: ");
+                    String dni = sc.nextLine();
+                    b.prestarLibro(tPrestamo, dni);
+                    break;
+
+                case 10:
+                    System.out.print("Título del libro: ");
+                    String tDevolver = sc.nextLine();
+                    b.devolverLibro(tDevolver);
+                    break;
+
+                case 11:
+                    b.getRepoP().mostrarHistorial();
+                    break;
+
+                case 12:
+                    System.out.print("Título del libro: ");
+                    String tBuscar = sc.nextLine();
+                    System.out.print("Autor del libro: ");
+                    String aBuscar = sc.nextLine();
+                    b.getRepoP().buscarPrestamosLibro(tBuscar, aBuscar);
+                    break;
+
 
                 default:
                     System.out.println("Opción inválida.");
@@ -104,4 +137,3 @@ public class GestionaBiblioteca {
         } while (opcion != 8);
     }
 }
-

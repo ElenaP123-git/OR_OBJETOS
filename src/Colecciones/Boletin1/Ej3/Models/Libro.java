@@ -1,6 +1,6 @@
 package Colecciones.Boletin1.Ej3.Models;
 
-import java.util.Objects;
+import Colecciones.Boletin1.Ej3.Exceptions.BibliotecaException;
 
 public class Libro {
 
@@ -23,17 +23,17 @@ public class Libro {
     }
 
     // MÉTODOS
-    public void prestar() throws Exception {
+    public void prestar() throws BibliotecaException {
         if (ejemplaresLibres == 0) {
-            throw new Exception("No hay ejemplares disponibles para prestar.");
+            throw new BibliotecaException("No hay ejemplares disponibles.");
         }
         ejemplaresLibres--;
         ejemplaresPrestados++;
     }
 
-    public void devolver() throws Exception {
+    public void devolver() throws BibliotecaException {
         if (ejemplaresPrestados == 0) {
-            throw new Exception("No hay ejemplares prestados para devolver.");
+            throw new BibliotecaException("No hay ejemplares prestados.");
         }
         ejemplaresPrestados--;
         ejemplaresLibres++;
@@ -45,19 +45,7 @@ public class Libro {
         return titulo + " - " + autor + " (" + anio + ")";
     }
 
-    // HASHCODE Y EQUALS
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Libro l)) return false;
-        return Objects.equals(titulo.toLowerCase(), l.titulo.toLowerCase());
-    }
-
-    @Override
-    public int hashCode() {
-        return titulo.toLowerCase().hashCode();
-    }
-
-    // GETTERS Y SETTERS
+    // GETTERS
     public String getTitulo() { return titulo; }
     public String getAutor() { return autor; }
     public String getGenero() { return genero; }
@@ -65,4 +53,3 @@ public class Libro {
     public int getEjemplaresLibres() { return ejemplaresLibres; }
     public int getEjemplaresPrestados() { return ejemplaresPrestados; }
 }
-

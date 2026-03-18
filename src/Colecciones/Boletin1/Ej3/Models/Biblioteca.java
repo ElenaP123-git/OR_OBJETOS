@@ -7,54 +7,77 @@ public class Biblioteca {
 
     // ATRIBUTOS
     private ArrayList<Libro> libros;
+    private RepositorioPrestamos repoP;
 
     // CONSTRUCTOR
     public Biblioteca() {
-        libros = new ArrayList<>();
+        this.libros = new ArrayList<>();
+        this.repoP = new RepositorioPrestamos();
     }
 
     // MÉTODOS
-
     public void agregarLibro(Libro l) {
         libros.add(l);
     }
 
     public Libro buscarPorTitulo(String titulo) {
-        for (Libro l : libros) {
-            if (l.getTitulo().equalsIgnoreCase(titulo)) return l;
+
+        int i = 0;
+        boolean encontrado = false;
+        Libro resultado = null;
+
+        while (i < libros.size() && !encontrado) {
+
+            if (libros.get(i).getTitulo().equalsIgnoreCase(titulo)) {
+                encontrado = true;
+                resultado = libros.get(i);
+            } else {
+                i++;
+            }
         }
-        return null;
+
+        return resultado;
     }
 
     public Libro buscarPorAutor(String autor) {
-        for (Libro l : libros) {
-            if (l.getAutor().equalsIgnoreCase(autor)) return l;
+
+        int i = 0;
+        boolean encontrado = false;
+        Libro resultado = null;
+
+        while (i < libros.size() && !encontrado) {
+
+            if (libros.get(i).getAutor().equalsIgnoreCase(autor)) {
+                encontrado = true;
+                resultado = libros.get(i);
+            } else {
+                i++;
+            }
         }
-        return null;
+
+        return resultado;
     }
 
-    public void prestarLibro(String titulo) throws BibliotecaException {
+
+    public void prestarLibro(String titulo, String usuario) {
         Libro l = buscarPorTitulo(titulo);
-        if (l == null)
-            throw new BibliotecaException("El libro no está en el inventario.");
-
-        try {
-            l.prestar();
-        } catch (Exception e) {
-            throw new BibliotecaException("No hay ejemplares disponibles.");
+        if (l == null) {
+            System.out.println("El libro no está en el inventario.");
+        } else {
+            repoP.agregarPrestamo(l, usuario);
         }
     }
 
-    public void devolverLibro(String titulo) throws BibliotecaException {
+
+    public void devolverLibro(String titulo) {
         Libro l = buscarPorTitulo(titulo);
-        if (l == null) throw new BibliotecaException("El libro no está en el inventario.");
-
-        try {
-            l.devolver();
-        } catch (Exception e) {
-            throw new BibliotecaException("No hay ejemplares prestados.");
+        if (l == null) {
+            System.out.println("El libro no está en el inventario.");
+        } else {
+            repoP.devolverPrestamo(l);
         }
     }
+
 
     public void mostrarInventario() {
         for (Libro l : libros) {
@@ -62,19 +85,38 @@ public class Biblioteca {
         }
     }
 
-    public void mostrarInfo(String titulo) throws BibliotecaException {
+    public void mostrarInfo(String titulo) {
         Libro l = buscarPorTitulo(titulo);
-        if (l == null) throw new BibliotecaException("El libro no existe.");
 
-        System.out.println("\nTítulo: " + l.getTitulo());
-        System.out.println("Autor: " + l.getAutor());
-        System.out.println("Género: " + l.getGenero());
-        System.out.println("Año: " + l.getAnio());
-        System.out.println("Ejemplares libres: " + l.getEjemplaresLibres());
-        System.out.println("Ejemplares prestados: " + l.getEjemplaresPrestados());
+        if (l == null) {
+            System.out.println("El libro no existe.");
+        }
+        else {
+            System.out.println("\nTítulo: " + l.getTitulo());
+            System.out.println("Autor: " + l.getAutor());
+            System.out.println("Género: " + l.getGenero());
+            System.out.println("Año: " + l.getAnio());
+            System.out.println("Ejemplares libres: " + l.getEjemplaresLibres());
+            System.out.println("Ejemplares prestados: " + l.getEjemplaresPrestados());
+        }
     }
 
-    // GETTERS Y SETTERS
-    public ArrayList<Libro> getLibros() { return libros; }
+    //GETTERS Y SETTERS
+
+    public ArrayList<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(ArrayList<Libro> libros) {
+        this.libros = libros;
+    }
+
+    public RepositorioPrestamos getRepoP() {
+        return repoP;
+    }
+
+    public void setRepoP(RepositorioPrestamos repoP) {
+        this.repoP = repoP;
+    }
 }
 
