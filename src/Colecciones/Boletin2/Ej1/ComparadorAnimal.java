@@ -1,4 +1,4 @@
-package Colecciones.Boletin2;
+package Colecciones.Boletin2.Ej1;
 
 import java.util.Comparator;
 
