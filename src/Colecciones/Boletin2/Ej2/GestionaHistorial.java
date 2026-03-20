@@ -11,7 +11,6 @@ public class GestionaHistorial {
         Scanner sc = new Scanner(System.in);
         Historial historial = new Historial();
 
-
         try {
             historial.agregarPagina("google.com", LocalDateTime.of(2023, 1, 10, 10, 30));
             historial.agregarPagina("google.com", LocalDateTime.now());
@@ -40,7 +39,7 @@ public class GestionaHistorial {
             System.out.println("7. Salir");
             System.out.print("Opción: ");
 
-            opcion = Integer.parseInt(sc.nextLine());
+            opcion = Integer.parseInt(sc.nextLine()); //se puede poner try y catch
 
             switch (opcion) {
 
@@ -89,9 +88,13 @@ public class GestionaHistorial {
             System.out.print("Fecha (AAAA-MM-DDTHH:MM) o vacío para ahora: ");
             String entrada = sc.nextLine();
 
-            LocalDateTime fecha = entrada.isBlank()
-                    ? LocalDateTime.now()
-                    : LocalDateTime.parse(entrada);
+            LocalDateTime fecha;
+
+            if (entrada.equals("")) {
+                fecha = LocalDateTime.now();
+            } else {
+                fecha = LocalDateTime.parse(entrada);
+            }
 
             historial.agregarPagina(url, fecha);
 
