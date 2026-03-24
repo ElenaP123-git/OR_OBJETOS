@@ -1,7 +1,11 @@
 package Colecciones.Boletin2.Ej2;
 
+import Colecciones.Boletin2.Ej1.Animal;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.TreeSet;
 
 public class Historial {
@@ -40,5 +44,16 @@ public class Historial {
         }
     }
 
+    public List<PaginaWeb> treeAList(){
+        List<PaginaWeb> paginaWebList = new ArrayList<>();
+        Iterator<PaginaWeb> paginaWebIterator = this.paginas.iterator();
+
+        do{
+            PaginaWeb p= paginaWebIterator.next();
+            paginaWebList.add(p);
+        } while (paginaWebIterator.hasNext());
+
+        return paginaWebList;
+    }
 }
 

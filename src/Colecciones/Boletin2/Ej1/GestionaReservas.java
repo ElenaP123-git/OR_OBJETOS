@@ -46,7 +46,7 @@ public class GestionaReservas {
 
                     case 3:
                         mostrarAnimalesOrdenados(repo);
-                        List<Animal> animalesLista = repo.TreeAList();
+                        List<Animal> animalesLista = repo.treeAList();
                         Collections.sort(animalesLista, new ComparadorNombreFecha());
                         System.out.println(animalesLista);
                         break;

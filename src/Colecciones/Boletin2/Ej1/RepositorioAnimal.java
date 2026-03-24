@@ -12,7 +12,6 @@ public class RepositorioAnimal {
     private String lugar;
     private double presupuestoAnual;
     private TreeSet<Animal> animales;
-    private List<Animal> animalList;
 
     // CONSTRUCTOR
 
@@ -40,7 +39,7 @@ public class RepositorioAnimal {
         }
     }
 
-    public List<Animal> TreeAList(){
+    public List<Animal> treeAList(){
         List<Animal> animalList1 = new ArrayList<>();
         Iterator<Animal> animalIterator = this.animales.iterator();
 

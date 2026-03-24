@@ -1,9 +1,10 @@
 package Colecciones.Boletin2.Ej2;
 
+import Colecciones.Boletin2.Ej1.ComparadorNombreFecha;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.*;
 
 public class GestionaHistorial {
     public static void main(String[] args) {
@@ -156,13 +157,11 @@ public class GestionaHistorial {
     }
 
     private static void mostrarOrdenadoPorUrl(Historial historial) {
-
-        TreeSet<PaginaWeb> ordenado = new TreeSet<>(new ComparadorUrl());
-        ordenado.addAll(historial.getPaginas());
-
-        System.out.println("\n--- HISTORIAL ORDENADO POR URL ---");
-        ordenado.forEach(System.out::println);
+        List<PaginaWeb> lista = historial.treeAList();
+        Collections.sort(lista,new ComparadorUrl());
+        System.out.println(lista);
     }
+
 
     private static void mostrarHistorialCompleto(Historial historial) {
 
