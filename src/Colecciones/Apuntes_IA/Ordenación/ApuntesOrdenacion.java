@@ -1,4 +1,4 @@
-package Colecciones.Apuntes_IA.Comparaciones;
+package Colecciones.Apuntes_IA.Ordenación;
 
 import java.util.*;
 
