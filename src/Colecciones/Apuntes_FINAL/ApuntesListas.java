@@ -1,4 +1,4 @@
-package Colecciones.Apuntes_IA;
+package Colecciones.Apuntes_FINAL;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -119,6 +119,24 @@ public class ApuntesListas {
         // TAMAÑO
 
         System.out.println("Tamaño del LinkedList: " + linkedList.size());
+
+        /*
+             Permiten duplicados
+             Mantienen orden
+
+        - ArrayList:
+        "Lista para acceder por índice"
+        → Acceso rápido por índice
+        → Muchas lecturas, pocas inserciones en medio
+        → Ejemplo: lista de alumnos, lista de tareas
+
+        - LinkedList:
+        "Lista con muchas inserciones/eliminaciones"
+        → Muchas inserciones/eliminaciones en medio o al principio
+        → Ejemplo: cola de clientes, historial de navegación
+
+        */
+
     }
 }
 

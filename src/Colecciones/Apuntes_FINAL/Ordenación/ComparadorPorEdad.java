@@ -1,4 +1,4 @@
-package Colecciones.Apuntes_IA.Ordenación;
+package Colecciones.Apuntes_FINAL.Ordenación;
 
 import java.util.Comparator;
 
@@ -10,6 +10,17 @@ public class ComparadorPorEdad implements Comparator<Persona> {
     }                                                       //compara las edades de cada persona
 
      /*
+       2) Comparator (orden externo)
+    -----------------------------
+    - Clase aparte que implementa Comparator<T>
+    - Se usa cuando quieres varios criterios de ordenación
+
+    Ejemplo:
+    public int compare(Persona a, Persona b) {
+        return a.getEdad() - b.getEdad();
+    }
+
+
     COMPARAR VARIOS ATRIBUTOS CON CONDICIONES (forma clásica)
 
     @Override

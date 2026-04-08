@@ -1,4 +1,4 @@
-package Colecciones.Apuntes_IA;
+package Colecciones.Apuntes_FINAL;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -96,5 +96,28 @@ public class ApuntesSets {
             System.out.println(it.next());
         }
     }
+
+    /*
+         NO permiten duplicados
+
+    - HashSet:
+    "Conjunto sin duplicados, sin orden, muy rápido"
+        → Sin orden
+        → Muy rápido en búsquedas, inserción y eliminación
+        → Ejemplo: conjunto de DNI, emails únicos
+
+    - LinkedHashSet:
+    "Conjunto sin duplicados, pero con orden de inserción"
+        → Mantiene orden de inserción
+        → Rápido
+        → Ejemplo: historial de elementos sin duplicados
+
+    - TreeSet:
+    "Conjunto ordenado automáticamente"
+        → Ordenado automáticamente
+        → Más lento
+        → Ejemplo: ranking ordenado, lista de palabras ordenadas
+
+     */
 }
 

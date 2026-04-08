@@ -1,4 +1,4 @@
-package Colecciones.Clone.Apuntes_IA;
+package Colecciones.Clone.Apuntes_FINAL;
 
 public class ApuntesClone {
     public static void main(String[] args) {
@@ -42,5 +42,31 @@ public class ApuntesClone {
         System.out.println("Original: " + p3); // ✔ NO cambia
         System.out.println("Copia:    " + p4);
     }
+    /*
+     1) Para usar clone():
+    ---------------------
+    - implements Cloneable
+    - Sobrescribir clone()
+    - Llamar a super.clone()
+
+    2) Copia superficial (shallow)
+    ------------------------------
+    ✔ Copia primitivos
+    ✔ Copia referencias (objetos compartidos)
+    ❌ NO copia objetos internos
+
+    return (PersonaShallow) super.clone();
+
+    3) Copia profunda (deep)
+    ------------------------
+    ✔ Copia primitivos
+    ✔ Copia objetos internos (clonándolos)
+    ✔ Cada objeto es independiente
+
+    Ejemplo deep:
+    Persona copia = (Persona) super.clone();
+    copia.direccion = direccion.clone();
+
+     */
 }
 

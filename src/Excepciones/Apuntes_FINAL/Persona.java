@@ -1,4 +1,4 @@
-package Excepciones.Apuntes_IA;
+package Excepciones.Apuntes_FINAL;
 
 // EXCEPCIONES EN CONSTRUCTOR
 
@@ -34,5 +34,27 @@ public class Persona {
     public String toString() {
         return nombre + " (" + edad + " años)";
     }
+
+    /*
+    Tipos:
+            - Checked (obligan a try/catch): IOException, SQLException
+    - Unchecked (Runtime): NullPointerException, IndexOutOfBounds
+
+    Estructura:
+            try {
+        // código
+    } catch (TipoException e) {
+        // manejo
+    } finally {
+        // siempre se ejecuta
+    }
+
+    throw:
+            - Lanza una excepción manualmente
+
+    throws:
+            - Indica que un método puede lanzar una excepción
+            */
+
 }
 

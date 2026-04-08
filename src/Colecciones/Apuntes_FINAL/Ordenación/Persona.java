@@ -1,4 +1,4 @@
-package Colecciones.Apuntes_IA.Ordenación;
+package Colecciones.Apuntes_FINAL.Ordenación;
 
 class Persona implements Comparable<Persona> {
 
@@ -27,6 +27,18 @@ class Persona implements Comparable<Persona> {
     }
 
     /*
+
+     1) Comparable (orden natural)
+    -----------------------------
+    - La clase implementa Comparable<T>
+    - Sobrescribe compareTo()
+    - Se usa cuando la clase tiene un orden "por defecto"
+
+    Ejemplo:
+    public int compareTo(Persona p) {
+        return this.nombre.compareTo(p.nombre);
+    }
+
 
     SE PUEDEN COMPARAR DOS COSAS CON CONDICIONES
 

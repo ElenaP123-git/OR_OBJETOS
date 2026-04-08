@@ -1,4 +1,4 @@
-package Colecciones.Apuntes_IA.Iteradores;
+package Colecciones.Apuntes_FINAL.Iteradores;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package Colecciones.Apuntes_IA;
+package Colecciones.Apuntes_FINAL;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -122,4 +122,28 @@ public class ApuntesMaps {
         ejemplo.clear();             // vaciar mapa
         ejemplo.isEmpty();           // comprobar vacío
     }
+
+    /*
+
+         Clave → Valor
+         NO permite claves duplicadas
+
+    - HashMap:
+    "Diccionario sin duplicados, sin orden, rápido en búsquedas"
+        → Sin orden
+        → Muy rápido en búsquedas, inserción y eliminación
+        → Ejemplo: lista de la compra (producto → kg)
+                   diccionario de alumnos (dni → alumno)
+
+    - LinkedHashMap:
+    "Diccionario rápido que conserve el orden"
+        → Mantiene orden de inserción
+        → Ejemplo: historial de accesos, cache simple
+
+    - TreeMap:
+    "Diccionario ordenado por clave"
+        → Ordenado por clave
+        → Ejemplo: agenda ordenada por nombre, ranking por clave
+
+     */
 }

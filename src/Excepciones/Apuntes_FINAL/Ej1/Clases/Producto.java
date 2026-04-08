@@ -1,7 +1,7 @@
-package Excepciones.Apuntes_IA.Ej1.Clases;
+package Excepciones.Apuntes_FINAL.Ej1.Clases;
 
-import Excepciones.Apuntes_IA.Ej1.Exceptions.PrecioInvalidoException;
-import Excepciones.Apuntes_IA.Ej1.Exceptions.StockInvalidoException;
+import Excepciones.Apuntes_FINAL.Ej1.Exceptions.PrecioInvalidoException;
+import Excepciones.Apuntes_FINAL.Ej1.Exceptions.StockInvalidoException;
 
 import java.util.Objects;
 
