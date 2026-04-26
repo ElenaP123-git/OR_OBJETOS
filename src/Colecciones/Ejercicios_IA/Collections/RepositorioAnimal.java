@@ -1,4 +1,4 @@
-package Colecciones.Ejercicios_IA;
+package Colecciones.Ejercicios_IA.Collections;
 
 import java.util.*;
 

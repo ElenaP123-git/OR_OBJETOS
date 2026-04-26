@@ -1,4 +1,4 @@
-package Colecciones.Ejercicios_IA;
+package Colecciones.Ejercicios_IA.Collections;
 
 public class Perro extends Animal implements Adoptable {
     //atributos
