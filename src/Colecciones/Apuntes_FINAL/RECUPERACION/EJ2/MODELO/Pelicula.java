@@ -1,9 +1,10 @@
-package Colecciones.Apuntes_FINAL.RECUPERACION.EJ2;
+package Colecciones.Apuntes_FINAL.RECUPERACION.EJ2.MODELO;
+
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ2.EXCEPCIONES.AnioInvalidoException;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
-public class Pelicula {
+public class Pelicula implements Comparable<Pelicula>{
 
     //atributos
     private int id;
@@ -18,7 +19,7 @@ public class Pelicula {
     public Pelicula(String titulo, String director, LocalDate fecha, Tipo_Genero genero, boolean disponible) {
         this.id = contador++;
         this.titulo = titulo;
-        this.fecha = fecha;
+        setFecha(fecha);
         this.genero = genero;
         this.disponible = disponible;
         this.director = director;
@@ -55,6 +56,12 @@ public class Pelicula {
     }
 
     public void setFecha(LocalDate fecha) {
+        int anio = fecha.getYear();
+        int actual = LocalDate.now().getYear();
+
+        if (anio < 1888 || anio > actual) {
+            throw new AnioInvalidoException("Año inválido");
+        }
         this.fecha = fecha;
     }
 
@@ -95,16 +102,13 @@ public class Pelicula {
                 "\n -----------------------------";
     }
 
-    //equals y hashcode
+    //no pongo equals ni hashcode pq el enunciado me pide detectar los duplicados
+
+    //comparable
     @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Pelicula pelicula)) return false;
-        return Objects.equals(director, pelicula.director) && Objects.equals(titulo, pelicula.titulo);
+    public int compareTo(Pelicula p) {
+        return this.titulo.compareToIgnoreCase(p.titulo);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(director, titulo);
-    }
 
 }
