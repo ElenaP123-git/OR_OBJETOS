@@ -1,4 +1,11 @@
-package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4;
+package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.REPOSITORY;
+
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.EXCEPTIONS.PartidoDuplicadoException;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.EXCEPTIONS.PartidoYaFinalizadoException;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL.Jugador;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL.OrdenacionRankingParejas;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL.Pareja;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL.Partido;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,7 +54,7 @@ public class RepoJuego {
 
     }
 
-    public void programarPartido(Partido partido) throws PartidoDuplicadoException{
+    public void programarPartido(Partido partido) throws PartidoDuplicadoException {
         for(Partido p: partidos){
             if((p.getP1().equals(partido.getP1()) && p.getP2().equals(partido.getP2())) ||
                     (p.getP1().equals(partido.getP2()) && p.getP2().equals(partido.getP1()))) {
@@ -57,7 +64,7 @@ public class RepoJuego {
         partidos.add(partido);
     }
 
-    public void registrarResultado(Partido partido, Integer[] resultado) throws PartidoYaFinalizadoException{
+    public void registrarResultado(Partido partido, Integer[] resultado) throws PartidoYaFinalizadoException {
         if(partido.isFinalizado()){
             throw new PartidoYaFinalizadoException("Partido ya finalizado");
         }

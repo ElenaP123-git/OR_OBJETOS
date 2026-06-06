@@ -1,4 +1,4 @@
-package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4;
+package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL;
 
 import java.util.Objects;
 

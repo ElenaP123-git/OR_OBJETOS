@@ -1,4 +1,6 @@
-package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4;
+package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL;
+
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.REPOSITORY.RepoJuego;
 
 import java.util.Comparator;
 

@@ -1,7 +1,6 @@
-package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4;
+package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Objects;
 
 public class Partido implements Comparable<Partido>{

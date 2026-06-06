@@ -1,4 +1,6 @@
-package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4;
+package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL;
+
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.EXCEPTIONS.RankingInvalidoException;
 
 import java.util.Objects;
 
@@ -40,7 +42,7 @@ public class Jugador {
         return ranking;
     }
 
-    public void setRanking(int ranking) throws RankingInvalidoException{
+    public void setRanking(int ranking) throws RankingInvalidoException {
         if(ranking <=0){
             throw new RankingInvalidoException("Ranking inválido");
         }

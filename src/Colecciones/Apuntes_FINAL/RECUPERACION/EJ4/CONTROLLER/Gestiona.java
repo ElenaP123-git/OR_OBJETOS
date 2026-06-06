@@ -1,4 +1,12 @@
-package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4;
+package Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.CONTROLLER;
+
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.EXCEPTIONS.PartidoDuplicadoException;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.EXCEPTIONS.PartidoYaFinalizadoException;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL.Categoria;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL.Jugador;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL.Pareja;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.MODEL.Partido;
+import Colecciones.Apuntes_FINAL.RECUPERACION.EJ4.REPOSITORY.RepoJuego;
 
 public class Gestiona {
         public static void main(String[] args) {
