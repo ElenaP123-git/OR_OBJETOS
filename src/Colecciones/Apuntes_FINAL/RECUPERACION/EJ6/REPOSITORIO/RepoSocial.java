@@ -76,7 +76,7 @@ public class RepoSocial {
     }
 
     public List<Usuario> mostrarRankingUsuarios(){
-        List<Usuario> usuarios1 = new ArrayList<>(publicaciones.keySet());  //esto hace una lista nueva con los valores de la original
+        List<Usuario> usuarios1 = new ArrayList<>(publicaciones.keySet());
         Collections.sort(usuarios1, new OrdenPorLikesUser(this));
         return usuarios1;
 
@@ -91,7 +91,7 @@ public class RepoSocial {
     }
 
     public List<Publicacion> listarPublicaciones (Usuario usuario){
-        List<Publicacion> publicacionList = new ArrayList<>(publicaciones.get(usuario));
+        List<Publicacion> publicacionList = new ArrayList<>(publicaciones.get(usuario));  //esto hace una lista nueva con los valores de la original
         Collections.sort(publicacionList, new OrdenPorLikesDesc());
         return publicacionList;
     }
