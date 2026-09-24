@@ -1,0 +1,5 @@
+package EJERCICIO1.Model;
+
+public enum EstadoEvent {
+	PENDIENTE,PROGRAMADO, CANCELADO, FINALIZADO, APLAZADO  
+}

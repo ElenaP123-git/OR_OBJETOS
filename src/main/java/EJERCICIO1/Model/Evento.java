@@ -1,15 +1,15 @@
-package Model;
+package EJERCICIO1.Model;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-import Exceptions.CraftersException;
+import EJERCICIO1.Exceptions.CraftersException;
 
 public abstract class Evento {
 
 	//ATRIBUTOS
 	private int id;
-	private String nombre;
+	private String nombre;  
 	private LocalDate fecha;
 	private int num_entradas;
 	private int asist_max;
@@ -25,11 +25,21 @@ public abstract class Evento {
 		this.num_entradas = num_entradas;
 		this.asist_max = asist_max;
 		if (num_entradas <0 || asist_max < 0 || num_entradas > asist_max) {
-			throw new CraftersException();
+			throw new CraftersException("Excepción");
 		}
 	
 	}
 	
+	
+	
+	public Evento(int num_entradas, int asist_max) {
+		super();
+		this.num_entradas = num_entradas;
+		this.asist_max = asist_max;
+	}
+
+
+
 	//MÉTODOS
 	public void modificaEstado(EstadoEvent est) {
 		

@@ -1,8 +1,12 @@
-package Model;
+package EJERCICIO1.Model;
+
+
 
 import java.time.LocalDate;
 
-import Exceptions.CraftersException;
+import EJERCICIO1.Exceptions.CraftersException;
+  
+
 
 public class Deportivo extends Evento{
 
@@ -15,6 +19,22 @@ public class Deportivo extends Evento{
 		super(nombre, fecha, num_entradas, asist_max, estado);
 		this.televisado = televisado;
 	}
+	
+	
+	
+	public Deportivo(int num_entradas, int asist_max) throws CraftersException {
+		super(num_entradas, asist_max);
+		this.televisado = televisado;
+	}
+
+
+
+	//GETTERS Y SETTERS
+
+	public void setTelevisado(boolean televisado) {
+		this.televisado = televisado;
+	}
+
 
 	//MÉTODOS
 	@Override
