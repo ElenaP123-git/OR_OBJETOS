@@ -1,0 +1,7 @@
+package APUNTES_COLECCIONES.APUNTES_TOTALES.RECUPERACION.EJ5.EXCEPTIONS;
+
+public class FechaInvalidaException extends RuntimeException {
+    public FechaInvalidaException(String message) {
+        super(message);
+    }
+}

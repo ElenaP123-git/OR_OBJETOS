@@ -1,0 +1,7 @@
+package APUNTES_COLECCIONES.APUNTES_TOTALES.RECUPERACION.EJ3.EXCEPTIONS;
+
+public class ClaseLlenaException extends RuntimeException {
+    public ClaseLlenaException(String message) {
+        super(message);
+    }
+}
