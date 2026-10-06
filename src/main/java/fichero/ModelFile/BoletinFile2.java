@@ -18,15 +18,19 @@ import fichero.Exceptions.RutaNoValidaException;
 	        String ruta = scanner.nextLine();
 
 	        //CONTROLO LA EXCEPCIÓN
+	        
+	        BoletinFile2 bol = new BoletinFile2();
+	        
 	        try {
-	            mostrarInformacion(ruta);
+	            bol.mostrarInformacion(ruta);
 	        } catch (RutaNoValidaException e) {
 	            System.out.println(e.getMessage());
 	        }
 	    }
 
-	    	//MÉTODO
-	    public static void mostrarInformacion(String ruta) throws RutaNoValidaException {
+	    	//MÉTODOS
+	    
+	    public void mostrarInformacion(String ruta) throws RutaNoValidaException { //sin usar static en los métodos (mejor crear objetos)
 	        File f = new File(ruta);
 
 	        // SI NO EXISTE -> EXCEPCION
