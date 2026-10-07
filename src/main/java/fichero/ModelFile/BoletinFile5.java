@@ -1,75 +1,66 @@
 package fichero.ModelFile;
 
 import java.io.File;
-import java.util.Scanner;
-import org.apache.logging.log4j.LogManager; //loggers
-import org.apache.logging.log4j.Logger;
-
-import fichero.Exceptions.RutaNoValidaException;
+import java.util.logging.Logger;
 
 public class BoletinFile5 {
-	private static final Logger logger = LogManager.getLogger(BoletinFile5.class);
-	
-	public static void main(String[] args) {
-		
-		Scanner scanner = new Scanner(System.in);
-        System.out.print("Introduce la ruta del directorio para calcular su tamaño: ");
-        String ruta = scanner.nextLine();
 
-        BoletinFile5 bol = new BoletinFile5();
-        
-        try {
-            bol.iniciar(ruta);
-        } catch (RutaNoValidaException e) {
-            logger.error("Error al procesar la ruta: {}", e.getMessage());
-        }
-        
-	}
-	public void iniciar(String ruta) throws RutaNoValidaException {
-		File direct = new File(ruta);
-		
-		if (!direct.exists()) {
-            throw new RutaNoValidaException("La ruta introducida no existe: " + ruta);
-        }
-        if (!direct.isDirectory()) {
-            throw new RutaNoValidaException("La ruta introducida no es un directorio: " + ruta);
-        }
-        
-        long tamanioBytes = calcularTamanioRecursivo(direct);
-    /*    String tamanioFormateado = formatearTamanio(tamanioBytes); 
-        logger.info("El tamaño total del directorio es: {}", tamanioFormateado);*/
-	}
-	
-	public long calcularTamanioRecursivo(File carpeta) {
-        long sumaTotal = 0;
-        File[] elementos = carpeta.listFiles();
+    private static final Logger LOGGER = Logger.getLogger(BoletinFile5.class.getName());
 
-        if (elementos == null) {
-            logger.warn("Sin permisos para acceder a la carpeta: {}", carpeta.getAbsolutePath());
+    public static void main(String[] args) {
+
+        File usuarioHome = new File(System.getProperty("user.home"));
+        File directorioAAnalizar = new File(usuarioHome, "miDirectorio");
+
+        // Verifico si el directorio existe y es una carpeta
+        if (directorioAAnalizar.exists() && directorioAAnalizar.isDirectory()) {
+
+            LOGGER.info("Cálculo de tamaño para: " + directorioAAnalizar.getAbsolutePath());
+
+            // Llamo métodos creando la instancia
+            BoletinFile5 bol = new BoletinFile5();
+            int totalBytes = bol.calcularTamanoDirectorio(directorioAAnalizar); 
+            bol.mostrarTamanoFormateado(totalBytes);
+
         } else {
-            for (File elem : elementos) {
-                if (elem.isFile()) {
-                    sumaTotal += elem.length();
-                } else if (elem.isDirectory()) {
-                    sumaTotal += calcularTamanioRecursivo(elem);
+            LOGGER.severe("[ERROR] El directorio especificado no existe o no es una carpeta: " + directorioAAnalizar.getAbsolutePath());
+        }
+    }
+
+    // Método RECURSIVO que recorre carpetas y subcarpetas sumando el tamaño (.length()) de cada fichero encontrado 
+     
+    private int calcularTamanoDirectorio(File directorio) {
+        int sumaBytes = 0;
+        File[] elementos = directorio.listFiles();
+
+        if (elementos != null) {
+            for (File elemento : elementos) {
+                if (elemento.isFile()) {
+                    // Casteo a (int) porque .length() devuelve long
+                    sumaBytes += (int) elemento.length();
+                } else if (elemento.isDirectory()) {
+                    // Si es una subcarpeta, volvemos a llamar a este mismo método (Recursividad)
+                    sumaBytes += calcularTamanoDirectorio(elemento);
                 }
             }
         }
 
-        return sumaTotal;
+        return sumaBytes;
     }
-	/*
-	public String formatearTamanio(long bytes) {
-        double bytesDouble = bytes;
-        double kilobytes = bytesDouble / 1024;
-        double megabytes = kilobytes / 1024;
 
-        if (megabytes >= 1) {
-            return String.format("%.2f MB", megabytes);
-        } else if (kilobytes >= 1) {
-            return String.format("%.2f KB", kilobytes);
+    // Método para convertir bytes a KB o MB con 2 decimales usando String.format
+    
+    private void mostrarTamanoFormateado(int bytes) {
+        double bytesEnKB = bytes / 1024.0;
+        double bytesEnMB = bytes / (1024.0 * 1024.0);
+
+        if (bytes < 1024) {
+            LOGGER.info("Tamaño total: " + bytes + " bytes");
+        } else if (bytes < 1024 * 1024) {
+            // %.2f sirve para limitar el resultado a 2 decimales
+            LOGGER.info(String.format("Tamaño total: %.2f KB", bytesEnKB));
         } else {
-            return String.format("%d Bytes", bytes);
+            LOGGER.info(String.format("Tamaño total: %.2f MB", bytesEnMB));
         }
-    } */
+    }
 }
