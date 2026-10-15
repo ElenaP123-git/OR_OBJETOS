@@ -49,7 +49,34 @@ public class DiffFolder {
     }
 	
     Collection <ResultadoComparacion> comparame(){
-    	
+    	Collection<ResultadoComparacion> resultados = new ArrayList<ResultadoComparacion>();
+
+        // Obtenemos solo los ficheros de cada carpeta (ignorando subdirectorios)
+        List<File> ficheros1 = obtenerSoloFicheros(folder1);
+        List<File> ficheros2 = obtenerSoloFicheros(folder2);
+
+        // Determinamos por cuál directorio empezar según el número de elementos
+        if (ficheros1.length >= ficheros2.length) {
+        } else {
+        	
+             }
+
+        return resultados;
+    }
+    
+    private List<File> obtenerSoloFicheros(File carpeta) {
+        File[] todos = carpeta.listFiles();
+        List<File> listaFicheros = new ArrayList<File>();
+
+        if (todos != null) {
+            for (int i = 0; i < todos.length; i++) {
+                if (todos[i].isFile()) {
+                    listaFicheros.add(todos[i]);
+                }
+            }
+        }
+
+        return listaFicheros;
     }
 	
 	//GETTERS Y SETTERS
