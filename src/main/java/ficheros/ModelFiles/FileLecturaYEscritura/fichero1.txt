@@ -1,0 +1,5 @@
+Nombre     Notas
+Pepe       2.1    5.6    6.7
+Marcos     1.0    10     
+Elena		4
+Javi        3      2
