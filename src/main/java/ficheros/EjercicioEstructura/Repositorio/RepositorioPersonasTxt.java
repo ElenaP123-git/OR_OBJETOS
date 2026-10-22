@@ -86,4 +86,31 @@ public class RepositorioPersonasTxt implements IRepositorioPersonas {
         
         return personas;
     }
+    
+    @Override
+    public Persona findById(String nombre) throws RepositorioException {
+        findAll(); // Asegura que la lista está llena
+        
+        Persona personaEncontrada = null;
+        
+        if (personas != null && nombre != null) {
+            for (int i = 0; i < personas.size(); i++) {
+                Persona p = personas.get(i);
+                
+                if (p.getNombre().equalsIgnoreCase(nombre.trim()) && personaEncontrada == null) {
+                    personaEncontrada = p;
+                }
+            }
+        }
+        
+        return personaEncontrada; 
+    }
+
+	@Override
+	public void save(Persona persona) throws RepositorioException {
+		
+		
+	}
+    
+    
 }

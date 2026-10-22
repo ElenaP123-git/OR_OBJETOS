@@ -26,7 +26,7 @@ public class BoletinFile9 {
 
         Scanner sc = new Scanner(System.in);
         System.out.print("¿Seguro que quieres eliminar este directorio y todo su contenido? (S/N): ");
-        String respuesta = sc.nextLine().trim();
+        String respuesta = sc.nextLine().trim(); 
 
         if (respuesta.equalsIgnoreCase("S")) {
             boolean exito = borrarDirectorio(dir);
