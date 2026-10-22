@@ -1,5 +1,11 @@
 package ficheros.EjercicioEstructura.Repositorio;
 
-public interface IRepositorioPersonas {
 
+import java.util.List;
+
+import ficheros.EjercicioEstructura.Modelo.Persona;
+
+public interface IRepositorioPersonas {
+	List<Persona> findAll() throws RepositorioException;
+	
 }

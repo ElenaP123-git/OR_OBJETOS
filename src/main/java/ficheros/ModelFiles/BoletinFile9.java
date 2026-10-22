@@ -25,7 +25,7 @@ public class BoletinFile9 {
         LOGGER.info("Se van a eliminar " + totalFicheros + " elemento(s) (ficheros y subcarpetas) en: " + dir.getAbsolutePath());
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("¿Estás seguro de que deseas eliminar este directorio y todo su contenido? (S/N): ");
+        System.out.print("¿Seguro que quieres eliminar este directorio y todo su contenido? (S/N): ");
         String respuesta = sc.nextLine().trim();
 
         if (respuesta.equalsIgnoreCase("S")) {
@@ -37,7 +37,7 @@ public class BoletinFile9 {
                 LOGGER.severe("[ERROR] Ocurrió un fallo al intentar borrar algunos elementos.");
             }
         } else {
-            LOGGER.info("Operación cancelada por el usuario.");
+            LOGGER.info("Cancelado por el usuario.");
         }
 
     }
