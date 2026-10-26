@@ -1,5 +1,6 @@
 package ficheros.ModelFiles.Bol2;
 
+/*
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
@@ -105,4 +106,4 @@ public class DiffFolder {
 	}
 
 	
-}
+} */
