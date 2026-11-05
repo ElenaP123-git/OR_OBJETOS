@@ -164,7 +164,7 @@ public class RepositorioPersonasTxt implements IRepositorioPersonas {
 		if (persona != null) {
 		    findAll();
 		    
-		    // Creamos una copia de seguridad en memoria para actualizar
+		    // Copia de seguridad 
 		    List<Persona> copiaLista = new ArrayList<>(personas);
 		    
 		    int pos = buscarPosicion(copiaLista, persona.getNombre());
@@ -175,7 +175,6 @@ public class RepositorioPersonasTxt implements IRepositorioPersonas {
 		        copiaLista.set(pos, persona); // Modificación si ya existe
 		    }
 		    
-		    // Escribimos los cambios en el disco físico
 		    escribirFicheroDesdeLista(copiaLista);
 		    
 		    // Si la escritura va bien, actualizamos la lista oficial
@@ -193,7 +192,7 @@ public class RepositorioPersonasTxt implements IRepositorioPersonas {
         
         if (pos != -1) {
             copiaLista.remove(pos);
-            escribirFicheroDesdeLista(copiaLista); // Actualizamos el fichero
+            escribirFicheroDesdeLista(copiaLista); // Actualizar el fichero
             this.personas = copiaLista;
             borrado = true;
         }
