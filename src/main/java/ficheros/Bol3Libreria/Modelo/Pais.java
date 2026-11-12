@@ -1,5 +1,6 @@
 package ficheros.Bol3Libreria.Modelo;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,8 +18,8 @@ public class Pais {
         super();
         this.nombre = nombre;
         this.continente = continente;
-        this.poblacion = poblacion;
-        this.idiomas = idiomas;
+        this.poblacion = poblacion; //long pq es un num muy grande
+        this.idiomas = new HashSet<>();
         this.moneda = moneda;
     }
 
