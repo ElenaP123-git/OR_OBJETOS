@@ -72,22 +72,22 @@ public class XMLDomPeliculas2 {
 
 					// Sinopsis opcional: si no viene o está vacía, queda null
 					String sinopsis = null;
-					String sinopsisStr = obtenerTexto(elem, "sinopsis");
+					String sinopsisStr = obtenerTexto(elem, "sinopsis"); 
 					if (!sinopsisStr.isEmpty()) {
-						sinopsis = sinopsisStr.replaceAll("\\s+", " ");
+					    sinopsis = sinopsisStr;
 					}
 
-					// Fecha en el XML viene como año (ej: 1999 o 0)
+					// Fecha en el XML viene como año
 					LocalDate fecha = null;
 					String fechaStr = obtenerTexto(elem, "Fecha");
 					if (!fechaStr.isEmpty()) {
 						int anio = Integer.parseInt(fechaStr);
 						if (anio > 0) {
-							fecha = LocalDate.of(anio, 1, 1);
+							fecha = LocalDate.of(anio, 1, 1); //pongo 1,1 porque solo da el año (es enero 1)
 						}
 					}
 
-					String director = obtenerTexto(elem, "Director").replaceAll("\\s+", " ");
+					String director = obtenerTexto(elem, "Director");
 
 					peliculas.add(new Pelicula2(titulo, duracion, genero, sinopsis, fecha, director));
 				}
@@ -112,7 +112,7 @@ public class XMLDomPeliculas2 {
 			DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factoria.newDocumentBuilder();
 			DOMImplementation implementacion = builder.getDOMImplementation();
-			Document documento = implementacion.createDocument(null, "CatalogoPeliculas", null);
+			Document documento = implementacion.createDocument(null, "CatalogoPeliculas", null); //cabecera xml, raiz, dtd
 			Element raiz = documento.getDocumentElement();
 
 			for (Pelicula2 p : peliculas) {
@@ -134,7 +134,7 @@ public class XMLDomPeliculas2 {
 
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); //MIRAR
 			DOMSource source = new DOMSource(documento);
 			StreamResult resultado = new StreamResult(new File(rutaResources + nombreFichero));
 			transformer.transform(source, resultado);
