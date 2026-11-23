@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<empleados>
+<empleado id="1">
+    <nombreApellidos>Juan Pérez</nombreApellidos>
+    <edad>35</edad>
+     <empresa>Empresa</empresa>
+     <puesto id="p102">
+        <nombrePuesto>Analista de Marketing</nombrePuesto>
+        <departamento>Marketing</departamento>
+        <salario>35000</salario>
+    </puesto>
+</empleado>
+<empleado id="2">
+</empleado>
+</empleados>

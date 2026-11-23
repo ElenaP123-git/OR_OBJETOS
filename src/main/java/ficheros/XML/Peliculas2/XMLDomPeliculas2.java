@@ -107,42 +107,41 @@ public class XMLDomPeliculas2 {
 	}
 
 	// MÉTODOS DE ESCRITURA
-	public void escribirPeliculasEnXML(String nombreFichero, List<Pelicula2> peliculas) {
-		try {
-			DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factoria.newDocumentBuilder();
-			DOMImplementation implementacion = builder.getDOMImplementation();
-			Document documento = implementacion.createDocument(null, "CatalogoPeliculas", null); //cabecera xml, raiz, dtd
-			Element raiz = documento.getDocumentElement();
+		public void escribirPeliculasEnXML(String nombreFichero, List<Pelicula2> peliculas) {
+			try {
+				DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factoria.newDocumentBuilder();
+				DOMImplementation implementacion = builder.getDOMImplementation();
+				Document documento = implementacion.createDocument(null, "CatalogoPeliculas", null);
+				Element raiz = documento.getDocumentElement();
 
-			for (Pelicula2 p : peliculas) {
-				Element elemPelicula = documento.createElement("Pelicula");
-				raiz.appendChild(elemPelicula);
+				for (Pelicula2 p : peliculas) {
+					Element elemPelicula = documento.createElement("Pelicula");
+					raiz.appendChild(elemPelicula);
 
-				creaElemento("Titulo", p.getTitulo(), elemPelicula, documento);
-				creaElemento("Duracion", Integer.toString(p.getDuracion()), elemPelicula, documento);
-				creaElemento("Genero", p.getGenero(), elemPelicula, documento);
+					creaElemento("Titulo", p.getTitulo(), elemPelicula, documento);
+					creaElemento("Duracion", Integer.toString(p.getDuracion()), elemPelicula, documento);
+					creaElemento("Genero", p.getGenero(), elemPelicula, documento);
 
-				if (p.getSinopsis() != null && !p.getSinopsis().isEmpty()) {
-					creaElemento("sinopsis", p.getSinopsis(), elemPelicula, documento);
+					if (p.getSinopsis() != null && !p.getSinopsis().isEmpty()) {
+						creaElemento("sinopsis", p.getSinopsis(), elemPelicula, documento);
+					}
+
+					int anio = (p.getFecha() != null) ? p.getFecha().getYear() : 0;
+					creaElemento("Fecha", Integer.toString(anio), elemPelicula, documento);
+					creaElemento("Director", p.getDirector(), elemPelicula, documento);
 				}
 
-				int anio = (p.getFecha() != null) ? p.getFecha().getYear() : 0;
-				creaElemento("Fecha", Integer.toString(anio), elemPelicula, documento);
-				creaElemento("Director", p.getDirector(), elemPelicula, documento);
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource source = new DOMSource(documento);
+				StreamResult resultado = new StreamResult(new File(rutaResources + nombreFichero));
+				transformer.transform(source, resultado);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); //MIRAR
-			DOMSource source = new DOMSource(documento);
-			StreamResult resultado = new StreamResult(new File(rutaResources + nombreFichero));
-			transformer.transform(source, resultado);
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-	}
-
+		
 	private Element creaElemento(String nombreElemento, String valorElemento, Element padre, Document documento) {
 		Element elemento = documento.createElement(nombreElemento);
 		Text texto = documento.createTextNode(valorElemento != null ? valorElemento : "");

@@ -15,7 +15,7 @@ public class Pelicula2 {
 
 	// CONSTRUCTORES
 	public Pelicula2() {
-	}
+  	}
 
 	public Pelicula2(String titulo, int duracion, String genero, String sinopsis, LocalDate fecha, String director) {
 		this.titulo = titulo;
