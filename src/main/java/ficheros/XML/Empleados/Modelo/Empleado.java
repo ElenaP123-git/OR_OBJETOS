@@ -18,6 +18,10 @@ public class Empleado {
 		this.empresa = empresa;
 		this.puesto = puesto;
 	}
+	
+	public Empleado() {
+		
+	}
 
 	//GETTERS Y SETTERS
 	public String getId() {
